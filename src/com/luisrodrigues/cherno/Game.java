@@ -10,6 +10,7 @@ import java.awt.image.DataBufferInt;
 import javax.swing.JFrame;
 
 import com.luisrodrigues.cherno.graphics.Screen;
+import com.luisrodrigues.cherno.input.Keyboard;
 
 /** Meu primeiro jogo em Java puro, seguindo os tutoriais do canais theCherno, no youtube 
  * 1-4 : montar o game loop e criar o primeiro display com a dimensão escolhida
@@ -22,10 +23,11 @@ public class Game extends Canvas implements Runnable {
 	public static int width = 300;
 	public static int height = width/ 16 * 9;
 	public static int scale = 3;
-	public static String title = "ChernoGame";
+	public static String title = "MadGod";
 	
 	private Thread thread;
 	private JFrame frame;
+	private Keyboard key;
 	private boolean running = false;
 	
 	private Screen screen;
@@ -36,10 +38,13 @@ public class Game extends Canvas implements Runnable {
 	public Game() {
 		Dimension size = new Dimension(width*scale, height*scale);
 		setPreferredSize(size);
+		setFocusable(true);
 		
 		screen = new Screen(width, height);
-		
 		frame = new JFrame();
+		key = new Keyboard();
+		
+		addKeyListener(key);
 	}
 	
 	public synchronized void start() {
@@ -87,8 +92,21 @@ public class Game extends Canvas implements Runnable {
 		stop();
 	}
 	
+	int x = 0 , y = 0;
+	//extra credit, to move camera faster
+	private static final int CAMERA_VELOCITY = 20;
+	
 	public void update() {
-		
+		key.update();
+		if(key.up) {
+			y = y - CAMERA_VELOCITY;
+		} else if(key.down) {
+			y = y + CAMERA_VELOCITY;
+		} else if(key.left) {
+			x = x - CAMERA_VELOCITY;
+		} else if(key.right) {
+			x = x + CAMERA_VELOCITY;
+		}
 	}
 	
 	public void render() {
@@ -99,7 +117,7 @@ public class Game extends Canvas implements Runnable {
 		}
 		
 		screen.clear();
-		screen.render();
+		screen.render(x, y);
 		
 		for(int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
@@ -122,6 +140,7 @@ public class Game extends Canvas implements Runnable {
 		game.frame.setVisible(true);
 		
 		game.start();
+		//game.requestFocus();
 		
 	}
 }
