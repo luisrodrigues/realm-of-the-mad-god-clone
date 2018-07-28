@@ -32,23 +32,22 @@ public class Screen {
 	public void render(int xOffset, int yOffset) {		
 		for(int y = 0; y < height; y++) {
 			
-			int yy = y + yOffset;
+			int yp = y + yOffset;
 			
-			//if(yy < 0 || yy >= height) { break; }
+			if(yp < 0 || yp >= height) {
+				continue;
+			}
 			
 			for(int x = 0; x < width; x++) {
 				
-				int xx = x + xOffset;
+				int xp = x + xOffset;
 				
-				//if(xx < 0 || xx >= width) { break; }
+				if(xp < 0 || xp >= width) {
+					continue;
+				}
+			
+				pixels[(xp) + (yp) * width] = Sprite.grass.pixels[(x & 15) + (y & 15) * Sprite.grass.SIZE];
 				
-				// >> 4 igual a / 16, tem a ver com 2^4 = 16, mas pesquisar melhor sobre isto
-				
-				int tileIndex = ((xx >> 4) & MAP_SIZE_MASK) + (((yy >> 4) & MAP_SIZE_MASK) * MAP_SIZE);
-				
-				//Se for hexadecimal pomos prefixo 0x antes do código, 0b se for binário (não é case sensitive)
-				
-				pixels[x + y * width] = tiles[tileIndex];
 			}
 		}
 	}

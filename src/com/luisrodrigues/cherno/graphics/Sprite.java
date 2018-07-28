@@ -2,15 +2,13 @@ package com.luisrodrigues.cherno.graphics;
 
 public class Sprite {
 	
-	private final int SIZE;
+	public final int SIZE;
 	private int x,y;
 	public int[] pixels;
 	private SpriteSheet sheet;
 	
-	//falta criar a SpriteSheet com todas as Sprites
-	
 	//green grass sprite
-	public static Sprite grass = new Sprite(16, 0, 0, null);
+	public static Sprite grass = new Sprite(16, 0, 0, SpriteSheet.tiles);
 	
 	public Sprite(int size, int x, int y, SpriteSheet sheet) {
 		SIZE = size;

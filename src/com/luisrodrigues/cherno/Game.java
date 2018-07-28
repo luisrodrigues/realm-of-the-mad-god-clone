@@ -93,7 +93,7 @@ public class Game extends Canvas implements Runnable {
 	}
 	
 	int x = 0 , y = 0;
-	//extra credit, to move camera faster
+	//extra credit, to move top-down camera faster
 	private static final int CAMERA_VELOCITY = 20;
 	
 	public void update() {
@@ -140,7 +140,6 @@ public class Game extends Canvas implements Runnable {
 		game.frame.setVisible(true);
 		
 		game.start();
-		//game.requestFocus();
 		
 	}
 }
