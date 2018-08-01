@@ -11,6 +11,8 @@ import javax.swing.JFrame;
 
 import com.luisrodrigues.cherno.graphics.Screen;
 import com.luisrodrigues.cherno.input.Keyboard;
+import com.luisrodrigues.cherno.level.Level;
+import com.luisrodrigues.cherno.level.RandomLevel;
 
 /** Meu primeiro jogo em Java puro, seguindo os tutoriais do canais theCherno, no youtube 
  * 1-4 : montar o game loop e criar o primeiro display com a dimensão escolhida
@@ -28,6 +30,7 @@ public class Game extends Canvas implements Runnable {
 	private Thread thread;
 	private JFrame frame;
 	private Keyboard key;
+	private Level level;
 	private boolean running = false;
 	
 	private Screen screen;
@@ -43,6 +46,7 @@ public class Game extends Canvas implements Runnable {
 		screen = new Screen(width, height);
 		frame = new JFrame();
 		key = new Keyboard();
+		level = new RandomLevel(64, 64);
 		
 		addKeyListener(key);
 	}
@@ -94,7 +98,7 @@ public class Game extends Canvas implements Runnable {
 	
 	int x = 0 , y = 0;
 	//extra credit, to move top-down camera faster
-	private static final int CAMERA_VELOCITY = 20;
+	private static final int CAMERA_VELOCITY = 10;
 	
 	public void update() {
 		key.update();
@@ -117,7 +121,7 @@ public class Game extends Canvas implements Runnable {
 		}
 		
 		screen.clear();
-		screen.render(x, y);
+		level.render(x, y, screen);
 		
 		for(int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];

@@ -9,7 +9,7 @@ public class Sprite {
 	
 	//green grass sprite
 	public static Sprite grass = new Sprite(16, 0, 0, SpriteSheet.tiles);
-	public static Sprite voidSprite = new Sprite(16, 0);
+	public static Sprite voidSprite = new Sprite(16, 0x1B87E0);
 	
 	public Sprite(int size, int x, int y, SpriteSheet sheet) {
 		SIZE = size;
