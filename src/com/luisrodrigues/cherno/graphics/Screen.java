@@ -2,6 +2,7 @@ package com.luisrodrigues.cherno.graphics;
 
 import java.util.Random;
 
+import com.luisrodrigues.cherno.entity.mob.Player;
 import com.luisrodrigues.cherno.level.tile.Tile;
 
 public class Screen {
@@ -53,6 +54,33 @@ public class Screen {
 				
 				pixels[xa + ya * width] = tile.sprite.pixels[x + y * tile.sprite.SIZE];
 				
+			}
+		}
+		
+	}
+	
+	public void renderPlayer(int xp, int yp, Sprite sprite) {
+		
+		xp -= xOffset;
+		yp -= yOffset;
+		
+		for(int y = 0; y < 32; y++) {
+			int ya = y + yp;
+			for(int x = 0; x < 32; x++) {
+				int xa = x + xp;
+				
+				if(xa < -32 || xa >= width || ya < 0 || ya >= height) {
+					break;
+				}
+				
+				if(xa < 0) {
+					xa = 0;
+				}
+				int col = sprite.pixels[x + y * 32];
+				
+				if(col != 0xffff00ff) { //added an ff to the color because of the alpha channel
+					pixels[xa + ya * width] = col;
+				}
 			}
 		}
 		

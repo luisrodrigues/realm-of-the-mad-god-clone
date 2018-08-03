@@ -1,7 +1,9 @@
 package com.luisrodrigues.cherno;
 
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -9,15 +11,11 @@ import java.awt.image.DataBufferInt;
 
 import javax.swing.JFrame;
 
+import com.luisrodrigues.cherno.entity.mob.Player;
 import com.luisrodrigues.cherno.graphics.Screen;
 import com.luisrodrigues.cherno.input.Keyboard;
 import com.luisrodrigues.cherno.level.Level;
 import com.luisrodrigues.cherno.level.RandomLevel;
-
-/** Meu primeiro jogo em Java puro, seguindo os tutoriais do canais theCherno, no youtube 
- * 1-4 : montar o game loop e criar o primeiro display com a dimensão escolhida
- * 5-9: montando o motor de renderig
- * **/
 
 public class Game extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
@@ -31,6 +29,7 @@ public class Game extends Canvas implements Runnable {
 	private JFrame frame;
 	private Keyboard key;
 	private Level level;
+	private Player player;
 	private boolean running = false;
 	
 	private Screen screen;
@@ -47,6 +46,7 @@ public class Game extends Canvas implements Runnable {
 		frame = new JFrame();
 		key = new Keyboard();
 		level = new RandomLevel(64, 64);
+		player = new Player(key);
 		
 		addKeyListener(key);
 	}
@@ -96,21 +96,9 @@ public class Game extends Canvas implements Runnable {
 		stop();
 	}
 	
-	int x = 0 , y = 0;
-	//extra credit, to move top-down camera faster
-	private static final int CAMERA_VELOCITY = 10;
-	
 	public void update() {
-		key.update();
-		if(key.up) {
-			y = y - CAMERA_VELOCITY;
-		} else if(key.down) {
-			y = y + CAMERA_VELOCITY;
-		} else if(key.left) {
-			x = x - CAMERA_VELOCITY;
-		} else if(key.right) {
-			x = x + CAMERA_VELOCITY;
-		}
+		key.update();	
+		player.update();
 	}
 	
 	public void render() {
@@ -121,7 +109,12 @@ public class Game extends Canvas implements Runnable {
 		}
 		
 		screen.clear();
-		level.render(x, y, screen);
+		
+		int xScroll = player.x - screen.width / 2;
+		int yScroll = player.y - screen.height / 2;
+		
+		level.render(xScroll, yScroll, screen);
+		player.render(screen);
 		
 		for(int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
@@ -129,6 +122,8 @@ public class Game extends Canvas implements Runnable {
 		
 		Graphics g = bs.getDrawGraphics();
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+		g.setColor(Color.WHITE);
+		g.setFont(new Font("Verdana", 0, 50));
 		g.dispose();
 		bs.show();
 	}

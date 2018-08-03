@@ -17,7 +17,7 @@ public class Entity {
 	}
 	
 	public void render(Screen screen) {
-			
+		
 	}
 	
 	public void remove() {
