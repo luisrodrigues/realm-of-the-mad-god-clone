@@ -8,7 +8,7 @@ public class Player extends Mob {
 	
 	private Keyboard input;
 
-	private static final int VEL = 10; //player velocity
+	private static final int VEL = 3; //player velocity
 
 	public Player(Keyboard input) {
 		this.input = input;
@@ -42,7 +42,22 @@ public class Player extends Mob {
 	}
 	
 	public void render(Screen screen) {
-		screen.renderPlayer(x - 16, y - 16, Sprite.player);
+		int flip = 0;
+		switch(dir) {
+			case 0: sprite = Sprite.player_forward;
+					break;
+			case 1: sprite = Sprite.player_side;
+					break;
+			case 2: sprite = Sprite.player_back;
+					break;
+			case 3: sprite = Sprite.player_side;
+					flip = 1;
+					break;
+			default: sprite = Sprite.player_back;
+					break;
+		}
+		
+		screen.renderPlayer(x - 16, y - 16, sprite, flip);
 	}
 	
 }
