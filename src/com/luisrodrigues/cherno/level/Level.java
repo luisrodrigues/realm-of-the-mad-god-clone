@@ -31,9 +31,7 @@ public class Level {
 		
 	}
 	
-	private void time() {
-		
-	}
+	//private void time() {}
 	
 	public void render(int xScroll, int yScroll, Screen screen) {
 		screen.setOffset(xScroll, yScroll);

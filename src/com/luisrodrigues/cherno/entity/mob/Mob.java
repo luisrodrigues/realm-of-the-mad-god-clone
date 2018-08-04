@@ -10,7 +10,12 @@ public abstract class Mob extends Entity {
 	protected boolean moving = false;
 	
 	public void move(int xa, int ya) {
-		//imagine a compass
+		/*imagine a compass:
+		 * 
+		 * 		N
+		 * W	x	 E
+		 * 		S
+		 * */
 		if(xa > 0) {
 			dir = 1; //east
 		}

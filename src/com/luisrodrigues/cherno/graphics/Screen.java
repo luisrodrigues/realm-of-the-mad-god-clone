@@ -2,7 +2,6 @@ package com.luisrodrigues.cherno.graphics;
 
 import java.util.Random;
 
-import com.luisrodrigues.cherno.entity.mob.Player;
 import com.luisrodrigues.cherno.level.tile.Tile;
 
 public class Screen {

@@ -9,11 +9,22 @@ public class Sprite {
 	
 	//green grass sprite
 	public static Sprite grass = new Sprite(16, 0, 0, SpriteSheet.tiles);
+	//blue sprite
 	public static Sprite voidSprite = new Sprite(16, 0x1B87E0);
 	
-	public static Sprite player_forward = new Sprite(32, 0, 2, SpriteSheet.tiles);
-	public static Sprite player_side = new Sprite(32, 1, 2, SpriteSheet.tiles);
-	public static Sprite player_back = new Sprite(32, 2, 2, SpriteSheet.tiles);
+	//player sprites
+	public static Sprite player_forward = new Sprite(32, 0, 1, SpriteSheet.tiles);
+	public static Sprite player_side = new Sprite(32, 1, 1, SpriteSheet.tiles);
+	public static Sprite player_back = new Sprite(32, 2, 1, SpriteSheet.tiles);
+	
+	public static Sprite player_forward_1 = new Sprite(32, 0, 2, SpriteSheet.tiles);
+	public static Sprite player_forward_2 = new Sprite(32, 0, 3, SpriteSheet.tiles);
+	
+	public static Sprite player_side_1 = new Sprite(32, 1, 2, SpriteSheet.tiles);
+	public static Sprite player_side_2 = new Sprite(32, 1, 3, SpriteSheet.tiles);
+	
+	public static Sprite player_back_1 = new Sprite(32, 2, 2, SpriteSheet.tiles);
+	public static Sprite player_back_2 = new Sprite(32, 2, 3, SpriteSheet.tiles);
 	
 	public Sprite(int size, int x, int y, SpriteSheet sheet) {
 		SIZE = size;

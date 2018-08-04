@@ -19,7 +19,7 @@ public class Tile {
 		
 	}
 	
-	//colisions - por default, não colide
+	//Collisions - by default it doens't collide
 	public boolean solid() {
 		return false;
 	}

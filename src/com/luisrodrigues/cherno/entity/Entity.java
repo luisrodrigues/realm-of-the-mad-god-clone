@@ -21,7 +21,7 @@ public class Entity {
 	}
 	
 	public void remove() {
-		//Remover uma Entity de um Level
+		//Remove an entity from the level
 		removed = true;
 	}
 	
