@@ -32,18 +32,18 @@ public class SpawnLevel extends Level {
 	}
 	
 	/* These colors can change
-	 * Grass - 0xff00 - red
+	 * Grass - 0x00ff00 - green
 	 * Flower - 0xffff00 - yellow
-	 * Rock - 0x7f7f00 - brownish
+	 * Rock - 0xff0000 - red
 	 * 
 	 * */	
 	protected void generateLevel() {
 		for(int i = 0; i < levelPixels.length; i++) {
-			if(levelPixels[i] == 0xff00) {
+			if(levelPixels[i] == 0x00ff00) {
 				tiles[i] = Tile.grass;
 			} else if(levelPixels[i] == 0xffff00) {
 				tiles[i] = Tile.flower;
-			} else if(levelPixels[i] == 0x7f7f00) {
+			} else if(levelPixels[i] == 0xff0000) {
 				tiles[i] = Tile.rock;
 			}
 		}
