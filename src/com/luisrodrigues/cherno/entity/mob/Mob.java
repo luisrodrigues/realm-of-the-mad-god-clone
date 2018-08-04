@@ -43,7 +43,9 @@ public abstract class Mob extends Entity {
 	}
 	
 	private boolean collision() {
+		//Experimental: if(level.getTile(x , y).solid()) { return true; }
 		return false;
+		
 	}
 	
 	public void render() {
