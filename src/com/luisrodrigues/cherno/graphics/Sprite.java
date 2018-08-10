@@ -16,6 +16,9 @@ public class Sprite {
 	//blue sprite
 	public static Sprite voidSprite = new Sprite(16, 0x1B87E0);
 	
+	//spawn_level extra sprites
+	//...
+	
 	//player sprites
 	public static Sprite player_forward = new Sprite(32, 0, 1, SpriteSheet.tiles);
 	public static Sprite player_side = new Sprite(32, 1, 1, SpriteSheet.tiles);
