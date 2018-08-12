@@ -7,17 +7,26 @@ public class Sprite {
 	public int[] pixels;
 	private SpriteSheet sheet;
 	
+	//void (black) sprite
+	public static Sprite voidSprite = new Sprite(16, 0x000000);
 	//green grass sprite
 	public static Sprite grass = new Sprite(16, 0, 0, SpriteSheet.tiles);
 	//flower sprite
 	public static Sprite flower = new Sprite(16, 1, 0, SpriteSheet.tiles);
 	//rock sprite
 	public static Sprite rock = new Sprite(16, 2, 0, SpriteSheet.tiles);
-	//blue sprite
-	public static Sprite voidSprite = new Sprite(16, 0x1B87E0);
 	
-	//spawn_level extra sprites
-	//...
+	//Spawn_level extra sprites
+	
+	//stone 
+	public static Sprite stone = new Sprite(16, 3, 0, SpriteSheet.tiles);
+	//water
+	public static Sprite water = new Sprite(16, 4, 0, SpriteSheet.tiles);
+	//lava
+	public static Sprite lava = new Sprite(16, 5, 0, SpriteSheet.tiles);
+	//wood
+	public static Sprite wood = new Sprite(16, 6, 0, SpriteSheet.tiles);
+	
 	
 	//player sprites
 	public static Sprite player_forward = new Sprite(32, 0, 1, SpriteSheet.tiles);
