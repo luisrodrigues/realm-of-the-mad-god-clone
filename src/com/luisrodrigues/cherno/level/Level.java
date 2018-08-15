@@ -9,6 +9,9 @@ public class Level {
 	protected int[] tilesInt;
 	protected int[] tiles;
 	
+	public static Level basic = new SpawnLevel("/levels/level.png");
+	public static Level spawn = new SpawnLevel("/levels/spawn.png");
+	
 	public Level(int width, int height) {
 		this.width = width;
 		this.height = height;
@@ -52,22 +55,19 @@ public class Level {
 		}
 				
 	}
-		
+	
 	public Tile getTile(int x, int y) {
 		if(x < 0 || y < 0 || x >= width || y >= height) {
 			return Tile.voidTile;
 		}
-		if(tiles[x + y * width] == 0xff00ff00) {
-			//green
+		if(tiles[x + y * width] == Tile.col_grass) {
 			return Tile.grass;
 		}
-		if(tiles[x + y * width] == 0xffffff00) {
-			//yellow
-			return Tile.flower;
+		if(tiles[x + y * width] == Tile.col_stone) {
+			return Tile.stone;
 		}
-		if(tiles[x + y * width] == 0xffff0000) {
-			//red
-			return Tile.rock;
+		if(tiles[x + y * width] == Tile.col_wood) {
+			return Tile.wood;
 		}
 		return Tile.voidTile;
 	}

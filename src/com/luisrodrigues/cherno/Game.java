@@ -17,6 +17,7 @@ import com.luisrodrigues.cherno.input.Keyboard;
 import com.luisrodrigues.cherno.level.Level;
 import com.luisrodrigues.cherno.level.RandomLevel;
 import com.luisrodrigues.cherno.level.SpawnLevel;
+import com.luisrodrigues.cherno.level.TileCoordinate;
 
 public class Game extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
@@ -46,9 +47,12 @@ public class Game extends Canvas implements Runnable {
 		screen = new Screen(width, height);
 		frame = new JFrame();
 		key = new Keyboard();
-		level = new SpawnLevel("/textures/levels/level.png");
+		level = Level.spawn;
+		
 		//adjust player spawn location here
-		player = new Player(6 * 16, 4 * 16, key);
+		TileCoordinate playerSpawn = new TileCoordinate(20, 60);
+		
+		player = new Player(playerSpawn.x(), playerSpawn.y(), key);
 		
 		addKeyListener(key);
 	}

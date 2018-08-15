@@ -17,7 +17,6 @@ public class Sprite {
 	public static Sprite rock = new Sprite(16, 2, 0, SpriteSheet.tiles);
 	
 	//Spawn_level extra sprites
-	
 	//stone 
 	public static Sprite stone = new Sprite(16, 3, 0, SpriteSheet.tiles);
 	//water

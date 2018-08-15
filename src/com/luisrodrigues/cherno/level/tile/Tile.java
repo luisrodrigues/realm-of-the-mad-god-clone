@@ -17,6 +17,13 @@ public class Tile {
 	public static Tile lava = new LavaTile(Sprite.lava);
 	public static Tile wood = new WoodTile(Sprite.wood);
 	
+	//green
+	public static final int col_grass = 0xff00ff00;
+	//yellow
+	public static final int col_stone = 0xffffff00;
+	//red
+	public static final int col_wood = 0xffff0000;
+	
 	
 	public Tile(Sprite sprite) {
 		this.sprite = sprite;
