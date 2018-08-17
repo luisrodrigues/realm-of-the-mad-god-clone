@@ -1,7 +1,8 @@
-package com.luisrodrigues.cherno.level.tile;
+package com.luisrodrigues.cherno.level.tile.spawn_level;
 
 import com.luisrodrigues.cherno.graphics.Screen;
 import com.luisrodrigues.cherno.graphics.Sprite;
+import com.luisrodrigues.cherno.level.tile.Tile;
 
 public class WaterTile extends Tile {
 

@@ -2,6 +2,10 @@ package com.luisrodrigues.cherno.level.tile;
 
 import com.luisrodrigues.cherno.graphics.Screen;
 import com.luisrodrigues.cherno.graphics.Sprite;
+import com.luisrodrigues.cherno.level.tile.spawn_level.LavaTile;
+import com.luisrodrigues.cherno.level.tile.spawn_level.StoneTile;
+import com.luisrodrigues.cherno.level.tile.spawn_level.WaterTile;
+import com.luisrodrigues.cherno.level.tile.spawn_level.WoodTile;
 
 public class Tile {
 	

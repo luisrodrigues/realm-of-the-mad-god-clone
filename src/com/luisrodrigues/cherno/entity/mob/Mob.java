@@ -10,6 +10,17 @@ public abstract class Mob extends Entity {
 	protected boolean moving = false;
 	
 	public void move(int xa, int ya) {
+		
+		//Fixed sliding
+		if(xa != 0 && ya != 0) {
+			//if we move in 2 axis, we separate movement
+			
+			move(xa, 0);
+			move(0, ya);
+			
+			return;
+		}
+		
 		/*imagine a compass:
 		 * 
 		 * 		N
@@ -32,19 +43,25 @@ public abstract class Mob extends Entity {
 			dir = 0; //north
 		}
 		
-		if(!collision()) {
-			x += xa; 
-			y += ya; 
+		if(!collision(xa, ya)) { 
+			x += xa;
+			y += ya;
 		}
+		
 	}
 	
 	public void update() {
 		
 	}
 	
-	private boolean collision() {
-		//Experimental: if(level.getTile(x , y).solid()) { return true; }
-		return false;
+	private boolean collision(int xa, int ya) {
+		boolean solid = false;
+		
+		if(level.getTile((x + xa) / 16, (y + ya) / 16).solid()) { 
+			solid = true; 
+		}
+		
+		return solid;
 		
 	}
 	
