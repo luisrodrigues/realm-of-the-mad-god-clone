@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import com.luisrodrigues.cherno.entity.mob.Player;
 import com.luisrodrigues.cherno.graphics.Screen;
 import com.luisrodrigues.cherno.input.Keyboard;
+import com.luisrodrigues.cherno.input.Mouse;
 import com.luisrodrigues.cherno.level.Level;
 import com.luisrodrigues.cherno.level.RandomLevel;
 import com.luisrodrigues.cherno.level.SpawnLevel;
@@ -55,7 +56,11 @@ public class Game extends Canvas implements Runnable {
 		player = new Player(playerSpawn.x(), playerSpawn.y(), key);
 		player.init(level);
 		
+		Mouse mouse = new Mouse();
+		
 		addKeyListener(key);
+		addMouseListener(mouse);
+		addMouseMotionListener(mouse);
 	}
 	
 	public synchronized void start() {
@@ -130,7 +135,12 @@ public class Game extends Canvas implements Runnable {
 		Graphics g = bs.getDrawGraphics();
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
 		g.setColor(Color.WHITE);
-		g.setFont(new Font("Verdana", 0, 50));
+		g.setFont(new Font("Verdana", 0, 18));
+		g.fillOval(Mouse.getX() - 32, Mouse.getY() - 32, 32, 32);
+		if(Mouse.getButton() != -1){
+			g.drawString("Button: " + Mouse.getButton(), Mouse.getX() - 50 , Mouse.getY() - 39);
+		}
+		
 		g.dispose();
 		bs.show();
 	}
