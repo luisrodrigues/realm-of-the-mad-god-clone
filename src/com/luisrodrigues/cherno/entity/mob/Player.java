@@ -1,8 +1,10 @@
 package com.luisrodrigues.cherno.entity.mob;
 
+import com.luisrodrigues.cherno.Game;
 import com.luisrodrigues.cherno.graphics.Screen;
 import com.luisrodrigues.cherno.graphics.Sprite;
 import com.luisrodrigues.cherno.input.Keyboard;
+import com.luisrodrigues.cherno.input.Mouse;
 
 public class Player extends Mob {
 	
@@ -50,8 +52,23 @@ public class Player extends Mob {
 		} else {
 			walking = false;
 		}
+		
+		updateShooting();
+		
 	}
 	
+	private void updateShooting() {
+
+		if(Mouse.getButton() == 1) {
+			double dx = Mouse.getX() - Game.getWindowWidth() / 2;
+			double dy = Mouse.getY() - Game.getWindowHeight() / 2;
+			double dir = Math.atan2(dy, dx);
+			
+			shoot(x, y, dir);
+		}
+				
+	}
+
 	public void render(Screen screen) {
 		int flip = 0;
 		switch(dir) {

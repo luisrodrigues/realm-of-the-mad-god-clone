@@ -54,6 +54,11 @@ public abstract class Mob extends Entity {
 		
 	}
 	
+	protected void shoot(int x, int y, double dir) {
+		dir *= 180 / Math.PI;
+		System.out.println("Angle: " + dir);
+	}
+	
 	private boolean collision(int xa, int ya) {
 		boolean solid = false;
 		
@@ -62,7 +67,7 @@ public abstract class Mob extends Entity {
 			int xt = ((x + xa) + c % 2 * 14 - 8) / 16;
 			int yt = ((y + ya) + c / 2 * 12 + 3) / 16;
 			
-			if(level.getTile((x + xa) / 16, (y + ya) / 16).solid()) { 
+			if(level.getTile(xt, yt).solid()) { 
 				solid = true; 
 			}
 			
